@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('quiz_question_table')
+        $data = DB::table('questions')
                     ->get();
 
         $manage = view('welcome')

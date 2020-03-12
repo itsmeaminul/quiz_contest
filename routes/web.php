@@ -27,3 +27,6 @@ Route::get('/winners', 'QuestionController@winners');
 // store routes
 Route::post('/store_quiz','QuestionController@store_quiz');
 Route::post('/store_question','QuestionController@store_question');
+
+
+Route::resource('admin/quizes','QuizController');

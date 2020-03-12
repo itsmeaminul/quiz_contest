@@ -14,7 +14,13 @@
                 <div class="form-group row pt-2">
                     <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
                     <div class="col-md-4">
-                        <input id="email" type="text" class="form-control" name="p_email" placeholder="write your e-mail address" required>
+                        <input id="email" type="text" class="form-control @error('p_email') is-invalid @enderror" name="p_email" value="{{ old('p_email') }}" placeholder="write your e-mail address" required>
+
+                        @error('p_email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row pt-2">
@@ -39,19 +45,19 @@
                         ?>
                         <tr>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[]" value="{{ $a[0] }}">
+                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[0] }}">
                                 <label for="answer1a">{{ $a[0] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[]" value="{{ $a[1] }}">
+                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[1] }}">
                                 <label for="answer1a">{{ $a[1] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[]" value="{{ $a[2] }}">
+                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[2] }}">
                                 <label for="answer1a">{{ $a[2] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[]" value="{{ $a[3] }}">
+                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[3] }}">
                                 <label for="answer1a">{{ $a[3] }}</label>
                             </td>
                             
