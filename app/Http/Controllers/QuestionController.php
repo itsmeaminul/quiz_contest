@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use APP\Http\Requests;
-use Illuminate\Support\Facades\Redirect;
-use DB;
+use App\Question;
 use Session;
-
 
 class QuestionController extends Controller
 {
@@ -16,29 +13,10 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function set_question()
+    public function index()
     {
         return view('admin.set_question');
-    }
 
-    public function set_quiz()
-    {
-        return view('admin.set_quiz');
-    }
-
-    public function all_question()
-    {
-        return view('admin.all_questions');
-    }
-
-    public function total_participents()
-    {
-        return view('admin.total_participents');
-    }
-
-    public function winners()
-    {
-        return view('admin.winners');
     }
 
     /**
@@ -59,38 +37,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $questions = new Question;
 
-    public function store_quiz(Request $request)
-    {
-        $data=array();
-        $data['quiz_id'] = $request->quiz_id;
-        $data['start_time'] = $request->start_time;
-        $data['end_time'] = $request->end_time;
+        $questions->question = $request->question;
+        $questions->option = implode(',', $request->option);
+        $questions->correct_answer = $request->correct_answer;
 
 
-        DB::table('quizs')->insert($data);
-        Session::put('exception','Quiz added successfully!!');
-        return Redirect::to('/set_quiz');
-    }
+        $questions->save();
 
-    public function store_question(Request $request)
-    {
-        $data=array();
-        $data['qq_id'] = $request->qq_id;
-        $data['question'] = $request->question;
-        $data['option'] = implode(",", $request->option);
-
-
-
-        DB::table('questions')->insert($data);
         Session::put('exception','Question added successfully!!');
-        return Redirect::to('/set_question');
+        return view('admin.set_question');
     }
-
-
-
 
     /**
      * Display the specified resource.
@@ -100,7 +58,9 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $questions = Question::all();
+        return view('admin.all_questions',['questions'=>$questions]);
+
     }
 
     /**

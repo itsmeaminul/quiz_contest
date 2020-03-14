@@ -7,7 +7,6 @@ use APP\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Session;
-session_start();
 
 class HomeController extends Controller
 {
@@ -46,15 +45,30 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $data=array();
-        $data['p_name'] = $request->p_name;
-        $data['p_email'] = $request->p_email;
-        $data['p_contact'] = $request->p_contact;
-        $data['p_answer'] = implode(",", $request->p_answer);
+        // $data=array();
+        // $data['name'] = $request->name;
+        // $data['email'] = $request->email;
+        // $data['contact'] = $request->contact;
+        // $data['answer'] = implode("," , $request['answer']);
+
+        
         
 
 
-        DB::table('participents_table')->insert($data);
+        // DB::table('participents')->insert($data);
+        // Session::put('exception','Thank You for Participate!!');
+        // return Redirect::to('/');
+
+
+        $participent = new Participent;
+
+        $participent->name = $request->name;
+        $participent->email = $request->email;
+        $participent->contact = $request->contact;
+        $participent->answer = implode(',', $request->answer);
+
+        $participent->save();
+
         Session::put('exception','Thank You for Participate!!');
         return Redirect::to('/');
     }

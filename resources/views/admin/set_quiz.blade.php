@@ -16,11 +16,11 @@
 							}
 							?>
 						</p>
-						<form name="add-notice-form" onsubmit="return validform()" method="post" action="{{URL::to('/store_quiz')}}">
+						<form name="add-notice-form" onsubmit="return validform()" method="post" action="{{URL::to('admin/quizes')}}">
 							{{ csrf_field() }}
 							<div class="form-group">
-								<label class="d-flex justify-content-start h5 font-weight-bold">Quiz ID</label>
-								<input type="text" class="form-control col-md-3 mb-3" name="quiz_id" placeholder="QUIZ ID" required="">
+								<label class="d-flex justify-content-start h5 font-weight-bold">Quiz Name</label>
+								<input type="text" class="form-control col-md-3 mb-3" name="name" placeholder="Quiz Name" required="">
 								<label for="start_time" class="d-flex justify-content-start h5 font-weight-bold">Start Time</label>
 								<input type="date" id="start_time" class="form-control col-md-3 mb-3" name="start_time"
 								min="2020-1-1" max="2022-1-1">

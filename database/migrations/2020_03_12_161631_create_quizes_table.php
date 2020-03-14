@@ -15,6 +15,7 @@ class CreateQuizesTable extends Migration
     {
         Schema::create('quizes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->date('start_time');
             $table->date('end_time');
             $table->timestamps();

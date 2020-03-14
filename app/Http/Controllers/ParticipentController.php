@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Quiz;
+use App\Participent;
 use Session;
 
-class QuizController extends Controller
+class ParticipentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        // $quizes = Quiz::get();
-        // dd($quizes);
-
-        return view('admin.set_quiz');
+        return view('welcome');
     }
 
     /**
@@ -29,7 +26,6 @@ class QuizController extends Controller
     public function create()
     {
         //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,16 +35,17 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        $quizes = new Quiz;
+        $user = new Participent;
 
-        $quizes->name = $request->name;
-        $quizes->start_time = $request->start_time;
-        $quizes->end_time = $request->end_time;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->contact = $request->contact;
+        $user->answer = implode(',', $request->answer);
 
-        $quizes->save();
+        $user->save();
 
-        Session::put('exception','Quiz added successfully!!');
-        return view('admin.set_quiz');
+        Session::put('exception','Thank You for Participate!!');
+        return Redirect::to('/');
     }
 
     /**

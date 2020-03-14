@@ -25,24 +25,24 @@
 							<h4 class="nav-link text-center pt-4">Menu</h4><hr>
 						</li>
 						<li class="nav-item pl-5">
-							<a class="nav-link" href="{{URL::to('/set_quiz')}}">
+							<a class="nav-link" href="{{URL::to('admin/quizes')}}">
 							<span>Set A Quiz</span></a>
 						</li>
 						<li class="nav-item pl-5">
-							<a class="nav-link" href="{{URL::to('/set_question')}}">
+							<a class="nav-link" href="{{URL::to('admin/questions')}}">
 							<span>Set Question</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link pl-5" href="{{URL::to('/all_question')}}">
+							<a class="nav-link pl-5" href="{{URL::to('admin/questions/{question} ')}}">
 							<span>All Question</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link pl-5" href="{{URL::to('/total_participents')}}">
+							<a class="nav-link pl-5" href="{{URL::to('admin/total_participents')}}">
 							<span>Participents</span></a>
 						</li>
 							
 						<li class="nav-item pl-5 pb-5">
-							<a class="nav-link" href="{{URL::to('/winners')}}">
+							<a class="nav-link" href="{{URL::to('admin/winners')}}">
 							<span>Winners</span></a>
 						</li>
 					</ul>

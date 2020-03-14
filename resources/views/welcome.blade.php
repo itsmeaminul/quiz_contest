@@ -3,20 +3,28 @@
 <div class="container">
     <p class="text-center font-weight-bold display-5">
         <div class="container text-center">
+            <p class="alert-success text-center">
+                <?php
+                $exception = Session::get('exception');
+                if($exception){
+                echo $exception;
+                Session::put('exception',null);
+                }
+                ?>
+            </p>
             <form method="POST" action="{{URL::to('/store_answer')}}" enctype="multipart/form-data">
-                @csrf
+                {{ csrf_field() }}
                 <div class="form-group row pt-2">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Your Name</label>
                     <div class="col-md-4">
-                        <input id="name" type="text" class="form-control" name="p_name" placeholder="write your full name" required>
+                        <input id="name" type="text" class="form-control" name="name" placeholder="write your full name" required>
                     </div>
                 </div>
                 <div class="form-group row pt-2">
                     <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
                     <div class="col-md-4">
-                        <input id="email" type="text" class="form-control @error('p_email') is-invalid @enderror" name="p_email" value="{{ old('p_email') }}" placeholder="write your e-mail address" required>
-
-                        @error('p_email')
+                        <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="write your e-mail address" required>
+                        @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -26,7 +34,7 @@
                 <div class="form-group row pt-2">
                     <label for="contact" class="col-md-4 col-form-label text-md-right">Contact Number</label>
                     <div class="col-md-4">
-                        <input id="contact" type="text" class="form-control" name="p_contact" placeholder="write your contact number" required>
+                        <input id="contact" type="text" class="form-control" name="contact" placeholder="write your contact number" required>
                     </div>
                 </div><hr>
                 <div class="mb-3 justify-content-center pl-5 pb-5">
@@ -45,19 +53,19 @@
                         ?>
                         <tr>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[0] }}">
+                                <input type="radio" id="answer" name="answer[{{$i}}]" value="{{ $a[0] }}">
                                 <label for="answer1a">{{ $a[0] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[1] }}">
+                                <input type="radio" id="answer" name="answer[{{$i}}]" value="{{ $a[1] }}">
                                 <label for="answer1a">{{ $a[1] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[2] }}">
+                                <input type="radio" id="answer" name="answer[{{$i}}]" value="{{ $a[2] }}">
                                 <label for="answer1a">{{ $a[2] }}</label>
                             </td>
                             <td class="pl-5">
-                                <input type="radio" id="answer" name="p_answer[{{$i}}]" value="{{ $a[3] }}">
+                                <input type="radio" id="answer" name="answer[{{$i}}]" value="{{ $a[3] }}">
                                 <label for="answer1a">{{ $a[3] }}</label>
                             </td>
                             

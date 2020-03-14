@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('question');
             $table->string('option');
+            $table->string('correct_answer');
             $table->timestamps();
         });
     }

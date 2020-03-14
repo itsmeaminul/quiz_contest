@@ -16,25 +16,29 @@
 							}
 							?>
 						</p>
-						<form name="add-notice-form" onsubmit="return validform()" method="post" action="{{URL::to('/store_question')}}">
+						<form name="add-notice-form" onsubmit="return validform()" method="post" action="{{URL::to('admin/questions')}}"">
 							{{ csrf_field() }}
 							<div class="form-group">
-								<label class="d-flex justify-content-start h5 font-weight-bold">Question ID</label>
-								<input type="text" class="form-control col-md-3 mb-3" name="qq_id" placeholder="Question ID" required="">
+								<label class="d-flex justify-content-start h5 font-weight-bold">Quiz Name</label>
+								<select class="form-control col-md-4 mb-2" id="quiz_name" name="name" required="">
+									<option value="Day 1" selected>Day 1</option>
+									<option value="Day 2">Day 2</option>
+									<option value="">Day 3</option>
+								</select>
+								
 								<label class="d-flex justify-content-start h5 font-weight-bold">Question</label>
 								<input type="text" class="form-control col-md-10 mb-3" name="question" placeholder="write Question 1 here" required="">
 								<input type="text" class="form-control col-md-4 mb-2" name="option[]" placeholder="write option A here" required="">
 								<input type="text" class="form-control col-md-4 mb-2" name="option[]" placeholder="write option B here" required="">
 								<input type="text" class="form-control col-md-4 mb-2" name="option[]" placeholder="write option C here" required="">
 								<input type="text" class="form-control col-md-4 mb-2" name="option[]" placeholder="write option D here" required="">
-
-								<label class="d-flex justify-content-start h5 font-weight-bold ">Answer</label>
-								<input type="text" class="form-control col-md-4 mb-2" name="option[]" placeholder="Correct Answer" required="">
+								<label class="d-flex justify-content-start h5 font-weight-bold ">Correct Answer</label>
+								<input type="text" class="form-control col-md-4 mb-2" name="correct_answer" placeholder="Correct Answer" required="">
 							</div><br>
 							
 							<div class="offset-md-5 rounded mx-auto d-block d-flex justify-content-center">
 								<button type="submit" class="col-md-4 btn btn-info font-weight-bold">ADD</button>
-							</div>	
+							</div>
 						</form>
 					</div>
 				</div>
@@ -42,5 +46,4 @@
 		</div>
 	</div>
 </div>
-
 @endsection
