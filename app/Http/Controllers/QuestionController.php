@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Quiz;
 use Session;
 
 class QuestionController extends Controller
@@ -15,7 +16,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('admin.set_question');
+        $quiz_name = Quiz::all();
+        return view('admin.set_question',['quiz_name'=>$quiz_name]);
+
+
+        // return view('admin.set_question');
 
     }
 

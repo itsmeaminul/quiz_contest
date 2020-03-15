@@ -19,8 +19,8 @@ Route::post('/store_answer','HomeController@store');
 Route::get('admin', 'AdminController@index');
 Route::resource('admin/quizes','QuizController');
 Route::resource('admin/questions','QuestionController');
-
-// Route::resource('user','UserController');
+Route::resource('admin/participants','ParticipantController');
+Route::resource('admin/winners','WinnerController');
 
 
 

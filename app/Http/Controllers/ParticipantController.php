@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use APP\Http\Requests;
+use App\Participant;
 use Illuminate\Support\Facades\Redirect;
-use DB;
 use Session;
 
-class HomeController extends Controller
+class ParticipantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = DB::table('questions')
-                    ->get();
-
-        $manage = view('welcome')
-                         ->with('all_data',$data);
-
-        return view('layouts.layout')
-                 ->with('layouts.layout',$manage);
+        Participant::all()->random(1);
+        return view('admin.winners');
     }
 
     /**
@@ -45,32 +38,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        // $data=array();
-        // $data['name'] = $request->name;
-        // $data['email'] = $request->email;
-        // $data['contact'] = $request->contact;
-        // $data['answer'] = implode("," , $request['answer']);
+        $participent = new Participant;
 
-        
-        
+        $participent->name = $request->name;
+        $participent->email = $request->email;
+        $participent->contact = $request->contact;
+        $participent->answer = implode(',', $request->answer);
 
+        $participent->save();
 
-        // DB::table('participents')->insert($data);
-        // Session::put('exception','Thank You for Participate!!');
-        // return Redirect::to('/');
-
-
-        // $participent = new Participent;
-
-        // $participent->name = $request->name;
-        // $participent->email = $request->email;
-        // $participent->contact = $request->contact;
-        // $participent->answer = implode(',', $request->answer);
-
-        // $participent->save();
-
-        // Session::put('exception','Thank You for Participate!!');
-        // return Redirect::to('/');
+        Session::put('exception','Thank You for Participate!!');
+        return Redirect::to('/');
     }
 
     /**
@@ -81,7 +59,9 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $participants = Participant::all();
+        return view('admin.total_participants',['participants'=>$participants]);
+
     }
 
     /**
@@ -92,7 +72,6 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Participent;
-use Session;
+use App\Winner;
 
-class ParticipentController extends Controller
+class WinnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ParticipentController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        //
     }
 
     /**
@@ -26,6 +25,7 @@ class ParticipentController extends Controller
     public function create()
     {
         //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,17 +35,7 @@ class ParticipentController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new Participent;
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->contact = $request->contact;
-        $user->answer = implode(',', $request->answer);
-
-        $user->save();
-
-        Session::put('exception','Thank You for Participate!!');
-        return Redirect::to('/');
+        //
     }
 
     /**
@@ -56,7 +46,8 @@ class ParticipentController extends Controller
      */
     public function show($id)
     {
-        //
+        $winners = Winner::all()->random(1);
+        return view('admin.winners',['winners'=>$winners]);
     }
 
     /**

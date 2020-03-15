@@ -20,10 +20,10 @@
 							{{ csrf_field() }}
 							<div class="form-group">
 								<label class="d-flex justify-content-start h5 font-weight-bold">Quiz Name</label>
-								<select class="form-control col-md-4 mb-2" id="quiz_name" name="name" required="">
-									<option value="Day 1" selected>Day 1</option>
-									<option value="Day 2">Day 2</option>
-									<option value="">Day 3</option>
+								<select class="form-control col-md-4 mb-2" id="quiz_name" required="">
+									@foreach($quiz_name as $row)
+									<option value="Day 1" name="" selected>{{$row->name}}</option>
+									@endforeach
 								</select>
 								
 								<label class="d-flex justify-content-start h5 font-weight-bold">Question</label>

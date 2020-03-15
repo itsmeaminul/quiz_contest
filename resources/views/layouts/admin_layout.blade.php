@@ -37,12 +37,12 @@
 							<span>All Question</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link pl-5" href="{{URL::to('admin/total_participents')}}">
-							<span>Participents</span></a>
+							<a class="nav-link pl-5" href="{{URL::to('admin/participants/{participant}')}}">
+							<span>Participants</span></a>
 						</li>
 							
 						<li class="nav-item pl-5 pb-5">
-							<a class="nav-link" href="{{URL::to('admin/winners')}}">
+							<a class="nav-link" href="{{URL::to('admin/winners/{winner}')}}">
 							<span>Winners</span></a>
 						</li>
 					</ul>

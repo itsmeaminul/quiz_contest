@@ -11,39 +11,36 @@
 			}
 			?>
 		</p>
-		<h2 class="font-weight-bold text-info">All Questions</h2>
+		<h2 class="font-weight-bold text-info">Total Participants</h2>
 		<div class="row">
 			<div class="col-12">
 				<table id="order-listing" class="table table-striped" style="width:100%;">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>Questions</th>
-							<th>Options</th>
+							<th>SRL</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Contact</th>
 							<th>Answer</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
 						
-						@foreach($questions as $question)
+						@foreach($participants as $i=>$row)
 						<tr>
-							<td>{{$question->id}}</td>
-							<td>{{$question->question}}</td>
-							<td>{{$question->option}}</td>
-							<td>{{$question->correct_answer}}</td>
+							<td>{{++$i}}</td>
+							<td>{{$row->name}}</td>
+							<td>{{$row->email}}</td>
+							<td>{{$row->contact}}</td>
+							<td>{{$row->answer}}</td>
 							<td>
-								<a href="" id="edit">
-									<button class="btn btn-outline-warning">&nbsp Edit &nbsp</button>
-								</a>
 								<a href="" id="delete">
 									<button class="btn btn-outline-danger">Delete</button>
 								</a>
 							</td>
 						</tr>
 						@endforeach
-
-
 					</tbody>
 				</table>
 			</div>

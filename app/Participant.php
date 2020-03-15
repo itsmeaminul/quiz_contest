@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Participent extends Model
+class Participant extends Model
 {
-    protected $table = 'particepents';
+    protected $table = 'participants';
     protected $primaryKey = 'id';
 }

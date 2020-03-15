@@ -12,7 +12,7 @@
                 }
                 ?>
             </p>
-            <form method="POST" action="{{URL::to('/store_answer')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{URL::to('admin/participants')}}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group row pt-2">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Your Name</label>
